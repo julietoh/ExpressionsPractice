@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.media.MediaPlayer;
 
 /**
  * Created by julietoh on 11/28/18.
@@ -20,6 +21,8 @@ public class StartActivity extends AppCompatActivity {
         Button buttonID = findViewById(R.id.button_identification);
         Button buttonIM= findViewById(R.id.button_imitation);
         Button buttonSC= findViewById(R.id.button_scenario);
+        MediaPlayer mediaPlayer= MediaPlayer.create( this, R.raw.welcome_audio);
+        mediaPlayer.start();
         final Intent intentQuiz = new Intent(this, StartScreen.class);
         final Intent intentMain = new Intent(this, ImitationActivity.class);
         final Intent intentScenario = new Intent(this, ScenarioActivity.class);
