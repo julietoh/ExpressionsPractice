@@ -23,28 +23,39 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:text="Choose which level you want to practice with!"
-            />
+            android:textAppearance="@style/TextAppearance.AppCompat" />
 
         <Button
             android:id="@+id/button_identification"
+            style="@android:style/Widget.Button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_margin="5dp"
             android:background="@color/colorAccent"
-            android:text="Identification" />
+            android:text="Identify"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display2" />
 
         <Button
             android:id="@+id/button_imitation"
+            style="@android:style/Widget.Button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="Imitation" />
+            android:layout_margin="5dp"
+            android:background="@color/colorAccent"
+            android:text="Imitate"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display2" />
 
         <Button
             android:id="@+id/button_scenario"
+            style="@android:style/Widget.Button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="Scenario" />
+            android:layout_margin="5dp"
+            android:background="@color/colorAccent"
+            android:text="React"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display2" />
     </LinearLayout>
 </RelativeLayout>

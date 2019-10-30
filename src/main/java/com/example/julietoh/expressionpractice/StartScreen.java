@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.media.MediaPlayer;
 
 public class StartScreen extends AppCompatActivity {
 
@@ -16,6 +17,8 @@ public class StartScreen extends AppCompatActivity {
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         Button startQuizButton = findViewById(R.id.button_start_quiz);
+        MediaPlayer mediaPlayer= MediaPlayer.create( this, R.raw.identify_dale);
+        mediaPlayer.start();
 
         startQuizButton.setOnClickListener(new View.OnClickListener() {
             @Override

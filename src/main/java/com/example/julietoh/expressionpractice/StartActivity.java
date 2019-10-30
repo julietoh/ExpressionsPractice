@@ -21,7 +21,7 @@ public class StartActivity extends AppCompatActivity {
         Button buttonID = findViewById(R.id.button_identification);
         Button buttonIM= findViewById(R.id.button_imitation);
         Button buttonSC= findViewById(R.id.button_scenario);
-        MediaPlayer mediaPlayer= MediaPlayer.create( this, R.raw.welcome_audio);
+        MediaPlayer mediaPlayer= MediaPlayer.create( this, R.raw.welcome_dale_2);
         mediaPlayer.start();
         final Intent intentQuiz = new Intent(this, StartScreen.class);
         final Intent intentMain = new Intent(this, ImitationActivity.class);

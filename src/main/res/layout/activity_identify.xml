@@ -114,12 +114,12 @@
         android:layout_alignParentBottom="true" >
 
         <Button
-        android:id="@+id/button_confirm_next"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/radio_group"
-        android:layout_marginTop="16dp"
-        android:text="Confirm" />
+            android:id="@+id/button_confirm_next"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/radio_group"
+            android:layout_marginTop="16dp"
+            android:text="Next" />
 
     </RelativeLayout>
 
