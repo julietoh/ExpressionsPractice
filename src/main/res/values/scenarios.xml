@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer-array name="ScenarioQuestions">
+        <item>@raw/identify_dale</item>
+        <item>@drawable/happy_01</item>
+        <item>@drawable/sad_01</item>
+
+        <item>@drawable/happy_2</item>
+        <item>@drawable/surprise_2</item>
+        <item>@drawable/sad_2</item>
+
+        <item>@drawable/sad_3</item>
+        <item>@drawable/anger_3</item>
+        <item>@drawable/happy_3</item>
+
+        <item>@drawable/anger_4</item>
+        <item>@drawable/happy_4</item>
+        <item>@drawable/surprise_4</item>
+        <item>@drawable/sad_4</item>
+
+        <item>@drawable/anger_5</item>
+        <item>@drawable/sad_5</item>
+        <item>@drawable/happy_5</item>
+        <item>@drawable/surprise_5</item>
+
+        <item>@drawable/happy_6</item>
+        <item>@drawable/sad_6</item>
+
+        <item>@drawable/surprise_7</item>
+
+    </integer-array>
+</resources>

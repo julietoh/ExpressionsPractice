@@ -29,7 +29,7 @@ public class StartScreen extends AppCompatActivity {
 
     }
     private void startQuiz() {
-        Intent intent = new Intent(StartScreen.this, IdentifyActivity.class);
+        Intent intent = new Intent(StartScreen.this, IdentifyActivity_v2.class);
         startActivity(intent);
     }
 }
