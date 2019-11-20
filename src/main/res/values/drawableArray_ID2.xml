@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer-array name="ID_Images2">
+        <item>@drawable/happy_7</item>
+        <item>@drawable/anger_7</item>
+        <item>@drawable/surprise_3</item>
+
+        <item>@drawable/sad_2</item>
+        <item>@drawable/happy_8</item>
+        <item>@drawable/surprise_8</item>
+
+        <item>@drawable/sad_9</item>
+        <item>@drawable/happy_9</item>
+        <item>@drawable/anger_9</item>
+
+        <item>@drawable/surprise_4</item>
+        <item>@drawable/sad_6</item>
+        <item>@drawable/sad_4</item>
+        <item>@drawable/anger_4</item>
+
+        <item>@drawable/happy_5</item>
+        <item>@drawable/anger_5</item>
+        <item>@drawable/surprise_5</item>
+        <item>@drawable/happy_6</item>
+
+        <item>@drawable/sad_5</item>
+        <item>@drawable/sad_6</item>
+
+        <item>@drawable/surprise_7</item>
+
+
+    </integer-array>
+</resources>

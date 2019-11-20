@@ -2,6 +2,7 @@ package com.example.julietoh.expressionpractice;
 
 import android.content.pm.ActivityInfo;
 import android.content.res.TypedArray;
+import android.media.MediaPlayer;
 import android.nfc.cardemulation.CardEmulation;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -29,6 +30,7 @@ public class IdentifyActivity_v2 extends AppCompatActivity {
     private ImageView image2;
     private ImageView image3;
     private ImageView image4;
+    private MediaPlayer mediaPlayer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +49,8 @@ public class IdentifyActivity_v2 extends AppCompatActivity {
         image3 = findViewById(R.id.emotion_image_3);
         image4 = findViewById(R.id.emotion_image_4);
         QuestionsLib = new QuestionsLib_ID(this);
+        mediaPlayer= MediaPlayer.create( this, R.raw.show_surprise);
+        mediaPlayer.start();
 
         card1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -82,11 +86,15 @@ public class IdentifyActivity_v2 extends AppCompatActivity {
         if (checkAnswer(selectedAnswer)) {
 //            Toast.makeText(IdentifyActivity_v2.this, "Good Job!", Toast.LENGTH_SHORT).show();
             incrementPicture();
+            mediaPlayer= MediaPlayer.create( this, R.raw.nice_job);
+            mediaPlayer.start();
         }
         else {
 //            Toast.makeText(IdentifyActivity_v2.this, "Try Again", Toast.LENGTH_SHORT).show();
             attempted = true;
             tvResponse.setText("Try again");
+            mediaPlayer= MediaPlayer.create( this, R.raw.try_again);
+            mediaPlayer.start();
         }
 
     }
