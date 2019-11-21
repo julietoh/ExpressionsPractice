@@ -84,13 +84,20 @@ public class IdentifyActivity_v2 extends AppCompatActivity {
 
     private void cardClicked(String[] selectedAnswer) {
         if (checkAnswer(selectedAnswer)) {
-//            Toast.makeText(IdentifyActivity_v2.this, "Good Job!", Toast.LENGTH_SHORT).show();
-            incrementPicture();
             mediaPlayer= MediaPlayer.create( this, R.raw.nice_job);
             mediaPlayer.start();
+            tvResponse.setText("Nice Job!");
+
+            final Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    incrementPicture();
+                }
+            }, 700);
+
         }
         else {
-//            Toast.makeText(IdentifyActivity_v2.this, "Try Again", Toast.LENGTH_SHORT).show();
             attempted = true;
             tvResponse.setText("Try again");
             mediaPlayer= MediaPlayer.create( this, R.raw.try_again);
@@ -115,19 +122,7 @@ public class IdentifyActivity_v2 extends AppCompatActivity {
         String scr = "Score: " + score + "/20";
         tvScore.setText(scr);
 
-        tvResponse.setText("Nice Job!");
 
-
-
-        // wait 3 seconds
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                // Magic here
-            }
-        }, 3000); // Millisecond 1000 = 1 sec
-
-        // setting new question
         tvQuestion.setText(QuestionsLib.questions[questionNum]);
         tvResponse.setText("");
 
@@ -135,6 +130,9 @@ public class IdentifyActivity_v2 extends AppCompatActivity {
         image2.setImageResource(QuestionsLib.getQuestion(questionNum, QuestionsLib.mImageLibrary2));
         image3.setImageResource(QuestionsLib.getQuestion(questionNum, QuestionsLib.mImageLibrary3));
         image4.setImageResource(QuestionsLib.getQuestion(questionNum, QuestionsLib.mImageLibrary4));
+
+        mediaPlayer= MediaPlayer.create(this, QuestionsLib.getAudio(questionNum, QuestionsLib.audioLibrary));
+        mediaPlayer.start();
 
     }
 }

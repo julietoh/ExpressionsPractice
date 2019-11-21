@@ -17,8 +17,8 @@ public class StartScreen extends AppCompatActivity {
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         Button startQuizButton = findViewById(R.id.button_start_quiz);
-        MediaPlayer mediaPlayer= MediaPlayer.create( this, R.raw.identify_dale);
-        mediaPlayer.start();
+//        MediaPlayer mediaPlayer= MediaPlayer.create( this, R.raw.identify_dale);
+//        mediaPlayer.start();
 
         startQuizButton.setOnClickListener(new View.OnClickListener() {
             @Override

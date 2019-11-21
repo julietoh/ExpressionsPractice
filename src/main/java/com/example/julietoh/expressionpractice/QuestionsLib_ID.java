@@ -16,6 +16,7 @@ public class QuestionsLib_ID {
     public TypedArray mImageLibrary2;
     public TypedArray mImageLibrary3;
     public TypedArray mImageLibrary4;
+    public TypedArray audioLibrary;
 
     public String[] answers1 = {
             "anger", "happy", "sad",
@@ -34,7 +35,7 @@ public class QuestionsLib_ID {
             "sad", "sad",
             "surprise" };
     public String[] answers3 = {
-            "surprise", "sad", "happy",
+            "happy", "sad", "happy",
             "surprise", "anger", "happy",
             "anger", "sad", "surprise",
             "happy", "anger", "happy", "surprise",
@@ -42,7 +43,7 @@ public class QuestionsLib_ID {
             "surprise", "anger",
             "happy" };
     public String[] answers4 = {
-            "sad", "surprise", "happy",
+            "surprise", "surprise", "happy",
             "anger", "sad", "sad",
             "happy", "surprise", "anger",
             "sad", "surprise", "anger", "happy",
@@ -51,11 +52,13 @@ public class QuestionsLib_ID {
             "sad" };
 
     public String[] questions = {
-            "show me anger", "show me happy", "show me sad", "show me happy",
-            "show me surprise", "show me sad", "show me sad", "show me anger",
-            "show me happy", "show me anger", "show me happy", "show me surprise",
-            "show me sad", "show me anger", "show me sad", "show me happy",
-            "show me surprise", "show me happy", "show me sad", "show me surprise" };
+            "show me surprise", "show me happy", "show me surprise",
+            "show me sad", "show me anger", "show me happy",
+            "show me anger", "show me surprise", "show me sad",
+            "show me anger", "show me sad", "show me happy", "show me surprise",
+            "show me anger", "show me happy", "show me surprise", "show me sad",
+            "show me happy", "show me anger",
+            "show me happy" };
 
     public QuestionsLib_ID(Context context) {
         super();
@@ -63,12 +66,17 @@ public class QuestionsLib_ID {
         mImageLibrary2 = context.getResources().obtainTypedArray(R.array.ID_Images2);
         mImageLibrary3 = context.getResources().obtainTypedArray(R.array.ID_Images3);
         mImageLibrary4 = context.getResources().obtainTypedArray(R.array.ID_Images4);
+        audioLibrary = context.getResources().obtainTypedArray(R.array.audio_array_ID);
     }
 
     /**
      * Returns the resource id of the image question
      */
     public int getQuestion(int questionNumber, TypedArray ImageLib) {
+        return ImageLib.getResourceId(questionNumber, 0);
+    }
+
+    public int getAudio(int questionNumber, TypedArray ImageLib) {
         return ImageLib.getResourceId(questionNumber, 0);
     }
 

@@ -34,12 +34,13 @@
 
         <TextView
             android:id="@+id/textQuestion"
-            android:text="Show me happy"
-            android:textSize="36sp"
-            android:textColor="@android:color/white"
-            android:layout_centerInParent="true"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="Show me Surprise"
+            android:textColor="@android:color/white"
+            android:textSize="36sp" />
 
     </RelativeLayout>
 
@@ -50,12 +51,12 @@
 
         <TextView
             android:id="@+id/responseToAnswer"
-            android:text="Try again"
-            android:textSize="15dp"
-            android:textColor="@android:color/white"
-            android:layout_centerInParent="true"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:textColor="@android:color/white"
+            android:textSize="15dp" />
 
     </RelativeLayout>
 
@@ -123,7 +124,7 @@
 
                 <ImageView
                     android:id="@+id/emotion_image_2"
-                    android:src="@drawable/fear_1"
+                    android:src="@drawable/happy_7"
                     android:layout_gravity="center_horizontal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />

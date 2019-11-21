@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer-array name="audio_array_Scenario">
+        <item>@raw/surprise_scenario_1</item>
+        <item>@raw/happy_scenario_1</item>
+        <item>@raw/surprise_scenario_2</item>
+
+        <item>@raw/sad_scenario_1</item>
+        <item>@raw/anger_scenario_1</item>
+        <item>@raw/happy_scenario_2</item>
+
+        <item>@raw/anger_scenario_2</item>
+        <item>@raw/show_surprise</item>
+        <item>@raw/show_sad</item>
+
+        <item>@raw/show_anger</item>
+        <item>@raw/show_sad</item>
+        <item>@raw/show_happy</item>
+        <item>@raw/show_surprise</item>
+
+        <item>@raw/show_anger</item>
+        <item>@raw/show_happy</item>
+        <item>@raw/show_surprise</item>
+        <item>@raw/show_sad</item>
+
+        <item>@raw/show_happy</item>
+        <item>@raw/show_anger</item>
+
+        <item>@raw/show_happy</item>
+
+    </integer-array>
+</resources>
