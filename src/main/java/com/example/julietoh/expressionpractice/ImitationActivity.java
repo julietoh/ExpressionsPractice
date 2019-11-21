@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.preference.PreferenceManager;
@@ -37,6 +38,7 @@ public class ImitationActivity extends AppCompatActivity implements Detector.Fac
     private SurfaceView cameraView; //SurfaceView used to display camera images
     private Button skipButton;
     private TextView score_text;
+    private MediaPlayer mediaPlayer;
 
     // Variables for question
     private int mQuestionNumber = 0;
@@ -59,6 +61,8 @@ public class ImitationActivity extends AppCompatActivity implements Detector.Fac
         initializeCameraDetector();
         detector.start();
         updateQuestion();
+        mediaPlayer= MediaPlayer.create( this, R.raw.imitate_emotion_shown);
+        mediaPlayer.start();
 
     }
 
@@ -190,6 +194,8 @@ public class ImitationActivity extends AppCompatActivity implements Detector.Fac
                 if (joy > 95 && smile > 90) {
                     mScore++;
                     startTimer();
+                    mediaPlayer= MediaPlayer.create( this, R.raw.nice_job);
+                    mediaPlayer.start();
                     Toast toast = Toast.makeText(this, "Correct! Expression is happy.",
                             Toast.LENGTH_SHORT);
                     toast.setGravity(Gravity.CENTER, 0, 0);
@@ -200,6 +206,8 @@ public class ImitationActivity extends AppCompatActivity implements Detector.Fac
                 if ((sadness > 20) || (disgust > 50 && joy < 10)) {
                     mScore++;
                     startTimer();
+                    mediaPlayer= MediaPlayer.create( this, R.raw.nice_job);
+                    mediaPlayer.start();
                     Toast toast = Toast.makeText(this, "Correct! Expression is sad.",
                             Toast.LENGTH_SHORT);
                     toast.setGravity(Gravity.CENTER, 0, 0);
@@ -210,6 +218,8 @@ public class ImitationActivity extends AppCompatActivity implements Detector.Fac
                 if (surprise > 10 || mouth_open > 15 || brow_raise > 25) {
                     mScore++;
                     startTimer();
+                    mediaPlayer= MediaPlayer.create( this, R.raw.nice_job);
+                    mediaPlayer.start();
                     Toast toast = Toast.makeText(this, "Correct! Expression is surprise.",
                             Toast.LENGTH_SHORT);
                     toast.setGravity(Gravity.CENTER, 0, 0);
@@ -220,6 +230,8 @@ public class ImitationActivity extends AppCompatActivity implements Detector.Fac
                 if (anger > 15 || brow_furrow > 10) {
                     mScore++;
                     startTimer();
+                    mediaPlayer= MediaPlayer.create( this, R.raw.nice_job);
+                    mediaPlayer.start();
                     Toast toast = Toast.makeText(this, "Correct! Expression is anger.",
                             Toast.LENGTH_SHORT);
                     toast.setGravity(Gravity.CENTER, 0, 0);
