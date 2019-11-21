@@ -155,7 +155,7 @@
 
                 <ImageView
                     android:id="@+id/emotion_image_3"
-                    android:src="@drawable/happy_01"
+                    android:src="@drawable/sad_3"
                     android:layout_gravity="center_horizontal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />

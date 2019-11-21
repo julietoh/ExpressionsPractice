@@ -19,7 +19,7 @@ public class QuestionsLib_ID {
     public TypedArray audioLibrary;
 
     public String[] answers1 = {
-            "anger", "happy", "sad",
+            "anger", "happy", "pencil",
             "happy", "surprise", "sad",
             "sad", "anger", "sad",
             "anger", "happy", "surprise", "sad",
@@ -30,12 +30,12 @@ public class QuestionsLib_ID {
             "happy", "anger", "surprise",
             "sad", "happy", "surprise",
             "sad", "happy", "anger",
-            "surprise", "sad", "sad", "anger",
+            "surprise", "sad", "hat", "anger",
             "happy", "anger", "surprise", "happy",
             "sad", "sad",
             "surprise" };
     public String[] answers3 = {
-            "happy", "sad", "happy",
+            "paperclip", "sad", "happy",
             "surprise", "anger", "happy",
             "anger", "sad", "surprise",
             "happy", "anger", "happy", "surprise",

@@ -5,7 +5,7 @@ import android.content.res.TypedArray;
 
 public class QuestionsLib_Scenario {
     public String[] mCorrectAnswer = {
-            "surprise", "happy", "surprise",
+            "happy", "surprise", "surprise",
             "sad", "anger", "happy",
             "anger", "surprise", "sad",
             "anger", "sad", "happy", "surprise",
@@ -35,7 +35,7 @@ public class QuestionsLib_Scenario {
             "sad", "sad",
             "surprise" };
     public String[] answers3 = {
-            "happy", "sad", "happy",
+            "sad", "sad", "happy",
             "surprise", "anger", "happy",
             "anger", "sad", "surprise",
             "happy", "anger", "happy", "surprise",

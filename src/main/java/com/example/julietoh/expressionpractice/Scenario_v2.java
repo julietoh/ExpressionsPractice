@@ -49,7 +49,11 @@ public class Scenario_v2 extends AppCompatActivity {
         image3 = findViewById(R.id.emotion_image_3);
         image4 = findViewById(R.id.emotion_image_4);
         QuestionsLib = new QuestionsLib_Scenario(this);
-        mediaPlayer= MediaPlayer.create( this, R.raw.surprise_scenario_1);
+
+        tvQuestion.setText(QuestionsLib.questions[0]);
+        tvResponse.setText("");
+
+        mediaPlayer= MediaPlayer.create( this, R.raw.happy_scenario_1);
         mediaPlayer.start();
 
         card1.setOnClickListener(new View.OnClickListener() {

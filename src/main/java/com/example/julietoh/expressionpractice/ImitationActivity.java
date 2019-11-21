@@ -61,7 +61,7 @@ public class ImitationActivity extends AppCompatActivity implements Detector.Fac
         initializeCameraDetector();
         detector.start();
         updateQuestion();
-        mediaPlayer= MediaPlayer.create( this, R.raw.imitate_emotion_shown);
+        mediaPlayer= MediaPlayer.create( this, R.raw.imitate_emotion);
         mediaPlayer.start();
 
     }
