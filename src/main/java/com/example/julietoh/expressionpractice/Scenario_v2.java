@@ -12,6 +12,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.support.v7.widget.CardView;
 import android.os.Handler;
+import android.widget.ViewFlipper;
+
+import com.airbnb.lottie.LottieAnimationView;
 
 public class Scenario_v2 extends AppCompatActivity {
     private int questionNum = 0;
@@ -32,14 +35,17 @@ public class Scenario_v2 extends AppCompatActivity {
     private ImageView image3;
     private ImageView image4;
     private MediaPlayer mediaPlayer;
+    private ViewFlipper viewFlipper;
+    private LottieAnimationView animationView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scenario_v2);
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        viewFlipper = findViewById(R.id.view_flipper);
         tvScore = findViewById(R.id.score);
-//        tvQuestion = findViewById(R.id.textQuestion);
         tvResponse = findViewById(R.id.responseToAnswer);
         card1 = findViewById(R.id.card1);
         card2 = findViewById(R.id.card2);
@@ -50,9 +56,9 @@ public class Scenario_v2 extends AppCompatActivity {
         image2 = findViewById(R.id.emotion_image_2);
         image3 = findViewById(R.id.emotion_image_3);
         image4 = findViewById(R.id.emotion_image_4);
+        animationView = (LottieAnimationView) findViewById(R.id.animation_view);
         QuestionsLib = new QuestionsLib_Scenario(this);
 
-//        tvQuestion.setText(QuestionsLib.questions[0]);
         tvResponse.setText("");
 
         mediaPlayer= MediaPlayer.create( this, R.raw.happy_scenario_1);
@@ -90,22 +96,36 @@ public class Scenario_v2 extends AppCompatActivity {
 
     private void cardClicked(String[] selectedAnswer, int cardNum) {
         if (checkAnswer(selectedAnswer)) {
-            mediaPlayer= MediaPlayer.create( this, R.raw.nice_job);
+            mediaPlayer.stop();
+            mediaPlayer= MediaPlayer.create( this, R.raw.correct_sound);
             mediaPlayer.start();
+            mediaPlayer= MediaPlayer.create( this, R.raw.nice_job);
+            final Handler handler1 = new Handler();
+            handler1.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    mediaPlayer.start();
+                }
+            }, 1000);
             tvResponse.setText("Nice Job!");
+            viewFlipper.showNext();
+            animationView.playAnimation();
+
 
             final Handler handler = new Handler();
             handler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
+                    viewFlipper.showPrevious();
                     incrementPicture();
                 }
-            }, 700);
+            }, 3000);
 
         }
         else {
             attempted = true;
             tvResponse.setText("Try again");
+            mediaPlayer.stop();
             mediaPlayer= MediaPlayer.create( this, R.raw.try_again);
             mediaPlayer.start();
             if (cardNum == 1) {
@@ -122,14 +142,13 @@ public class Scenario_v2 extends AppCompatActivity {
             }
 
             final Handler handler = new Handler();
+            mediaPlayer= MediaPlayer.create(this, QuestionsLib.getAudio(questionNum, QuestionsLib.audioLibrary_scenario));
             handler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
+                    mediaPlayer.start();
                 }
-            }, 1300);
-
-            mediaPlayer= MediaPlayer.create(this, QuestionsLib.getAudio(questionNum, QuestionsLib.audioLibrary_scenario));
-            mediaPlayer.start();
+            }, 500);
 
         }
 
@@ -151,8 +170,6 @@ public class Scenario_v2 extends AppCompatActivity {
         String scr = "Score: " + score + "/20";
         tvScore.setText(scr);
 
-
-//        tvQuestion.setText(QuestionsLib.questions[questionNum]);
         tvResponse.setText("");
         imageScenario.setImageResource(QuestionsLib.getQuestion(questionNum, QuestionsLib.mImageLibraryScenario));
         image1.setImageResource(QuestionsLib.getQuestion(questionNum, QuestionsLib.mImageLibrary1));

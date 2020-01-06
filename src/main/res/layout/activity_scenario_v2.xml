@@ -24,22 +24,41 @@
             android:layout_centerInParent="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
-
     </RelativeLayout>
 
-    <RelativeLayout
-        android:layout_weight="1"
+    <ViewFlipper
+        android:id="@+id/view_flipper"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp">
+
+            <ImageView
+                android:id="@+id/scenario_image"
+                android:src="@drawable/happy_scen_1"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+
+
+        <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="100dp">
 
-        <ImageView
-        android:id="@+id/scenario_image"
-        android:src="@drawable/happy_scen_1"
-        android:layout_gravity="center_horizontal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/animation_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:lottie_fileName="bear.json"
+            app:lottie_loop="true"
+            app:lottie_autoPlay="true"
+            />
+        </RelativeLayout>
 
-    </RelativeLayout>
+    </ViewFlipper>
 
     <RelativeLayout
         android:layout_weight="1"
@@ -54,7 +73,6 @@
             android:layout_centerVertical="true"
             android:textColor="@android:color/white"
             android:textSize="15dp" />
-
     </RelativeLayout>
 
     <GridLayout
@@ -81,7 +99,7 @@
             android:layout_marginRight="16dp"
             app:cardElevation="8dp"
             app:cardCornerRadius="8dp" >
-            
+
             <LinearLayout
                 android:layout_gravity="center_horizontal|center_vertical"
                 android:layout_margin="16dp"
