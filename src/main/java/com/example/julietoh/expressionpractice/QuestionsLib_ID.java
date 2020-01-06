@@ -52,13 +52,13 @@ public class QuestionsLib_ID {
             "sad" };
 
     public String[] questions = {
-            "show me surprise", "show me happy", "show me surprise",
-            "show me sad", "show me anger", "show me happy",
-            "show me anger", "show me surprise", "show me sad",
-            "show me anger", "show me sad", "show me happy", "show me surprise",
-            "show me anger", "show me happy", "show me surprise", "show me sad",
-            "show me happy", "show me anger",
-            "show me happy" };
+            "Show me surprised", "Show me happy", "Show me surprised",
+            "Show me sad", "Show me angry", "Show me happy",
+            "Show me angry", "Show me surprised", "Show me sad",
+            "Show me angry", "Show me sad", "Show me happy", "Show me surprised",
+            "Show me angry", "Show me happy", "Show me surprised", "Show me sad",
+            "Show me happy", "Show me angry",
+            "Show me happy" };
 
     public QuestionsLib_ID(Context context) {
         super();

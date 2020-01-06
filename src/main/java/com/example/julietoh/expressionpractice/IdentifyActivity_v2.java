@@ -12,6 +12,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.support.v7.widget.CardView;
 import android.os.Handler;
+import android.widget.ViewFlipper;
+
+import com.airbnb.lottie.LottieAnimationView;
 
 public class IdentifyActivity_v2 extends AppCompatActivity {
     private int questionNum = 0;
@@ -31,12 +34,15 @@ public class IdentifyActivity_v2 extends AppCompatActivity {
     private ImageView image3;
     private ImageView image4;
     private MediaPlayer mediaPlayer;
+    private ViewFlipper viewFlipper;
+    private LottieAnimationView animationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_identify_v2);
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        viewFlipper = findViewById(R.id.view_flipper);
         tvScore = findViewById(R.id.score);
         tvQuestion = findViewById(R.id.textQuestion);
         tvResponse = findViewById(R.id.responseToAnswer);
@@ -48,6 +54,7 @@ public class IdentifyActivity_v2 extends AppCompatActivity {
         image2 = findViewById(R.id.emotion_image_2);
         image3 = findViewById(R.id.emotion_image_3);
         image4 = findViewById(R.id.emotion_image_4);
+        animationView = (LottieAnimationView) findViewById(R.id.animation_view);
         QuestionsLib = new QuestionsLib_ID(this);
         mediaPlayer= MediaPlayer.create( this, R.raw.show_surprise);
         mediaPlayer.start();
@@ -87,14 +94,17 @@ public class IdentifyActivity_v2 extends AppCompatActivity {
             mediaPlayer= MediaPlayer.create( this, R.raw.nice_job);
             mediaPlayer.start();
             tvResponse.setText("Nice Job!");
+            viewFlipper.showNext();
+            animationView.playAnimation();
 
             final Handler handler = new Handler();
             handler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
+                    viewFlipper.showPrevious();
                     incrementPicture();
                 }
-            }, 700);
+            }, 3000);
 
         }
         else {
