@@ -18,7 +18,7 @@ public class Scenario_v2 extends AppCompatActivity {
     private int score = 0;
     private boolean attempted = false;
     private TextView tvScore;
-    private TextView tvQuestion;
+//    private TextView tvQuestion;
     private TextView tvResponse;
     private CardView card1;
     private CardView card2;
@@ -26,6 +26,7 @@ public class Scenario_v2 extends AppCompatActivity {
     private CardView card4;
 
     private QuestionsLib_Scenario QuestionsLib;
+    private ImageView imageScenario;
     private ImageView image1;
     private ImageView image2;
     private ImageView image3;
@@ -35,22 +36,23 @@ public class Scenario_v2 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_identify_v2);
+        setContentView(R.layout.activity_scenario_v2);
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         tvScore = findViewById(R.id.score);
-        tvQuestion = findViewById(R.id.textQuestion);
+//        tvQuestion = findViewById(R.id.textQuestion);
         tvResponse = findViewById(R.id.responseToAnswer);
         card1 = findViewById(R.id.card1);
         card2 = findViewById(R.id.card2);
         card3 = findViewById(R.id.card3);
         card4 = findViewById(R.id.card4);
+        imageScenario = findViewById(R.id.scenario_image);
         image1 = findViewById(R.id.emotion_image_1);
         image2 = findViewById(R.id.emotion_image_2);
         image3 = findViewById(R.id.emotion_image_3);
         image4 = findViewById(R.id.emotion_image_4);
         QuestionsLib = new QuestionsLib_Scenario(this);
 
-        tvQuestion.setText(QuestionsLib.questions[0]);
+//        tvQuestion.setText(QuestionsLib.questions[0]);
         tvResponse.setText("");
 
         mediaPlayer= MediaPlayer.create( this, R.raw.happy_scenario_1);
@@ -59,34 +61,34 @@ public class Scenario_v2 extends AppCompatActivity {
         card1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                cardClicked(QuestionsLib.answers1);
+                cardClicked(QuestionsLib.answers1, 1);
                 }
         });
 
         card2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                cardClicked(QuestionsLib.answers2);
+                cardClicked(QuestionsLib.answers2, 2);
             }
         });
 
         card3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                cardClicked(QuestionsLib.answers3);
+                cardClicked(QuestionsLib.answers3, 3);
             }
         });
 
         card4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                cardClicked(QuestionsLib.answers4);
+                cardClicked(QuestionsLib.answers4, 4);
             }
         });
 
     }
 
-    private void cardClicked(String[] selectedAnswer) {
+    private void cardClicked(String[] selectedAnswer, int cardNum) {
         if (checkAnswer(selectedAnswer)) {
             mediaPlayer= MediaPlayer.create( this, R.raw.nice_job);
             mediaPlayer.start();
@@ -106,6 +108,29 @@ public class Scenario_v2 extends AppCompatActivity {
             tvResponse.setText("Try again");
             mediaPlayer= MediaPlayer.create( this, R.raw.try_again);
             mediaPlayer.start();
+            if (cardNum == 1) {
+                image1.setImageResource(R.drawable.wrong_answer);
+            }
+            else if (cardNum == 2) {
+                image2.setImageResource(R.drawable.wrong_answer);
+            }
+            else if (cardNum == 3) {
+                image3.setImageResource(R.drawable.wrong_answer);
+            }
+            else if (cardNum == 4) {
+                image4.setImageResource(R.drawable.wrong_answer);
+            }
+
+            final Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                }
+            }, 1300);
+
+            mediaPlayer= MediaPlayer.create(this, QuestionsLib.getAudio(questionNum, QuestionsLib.audioLibrary_scenario));
+            mediaPlayer.start();
+
         }
 
     }
@@ -127,9 +152,9 @@ public class Scenario_v2 extends AppCompatActivity {
         tvScore.setText(scr);
 
 
-        tvQuestion.setText(QuestionsLib.questions[questionNum]);
+//        tvQuestion.setText(QuestionsLib.questions[questionNum]);
         tvResponse.setText("");
-
+        imageScenario.setImageResource(QuestionsLib.getQuestion(questionNum, QuestionsLib.mImageLibraryScenario));
         image1.setImageResource(QuestionsLib.getQuestion(questionNum, QuestionsLib.mImageLibrary1));
         image2.setImageResource(QuestionsLib.getQuestion(questionNum, QuestionsLib.mImageLibrary2));
         image3.setImageResource(QuestionsLib.getQuestion(questionNum, QuestionsLib.mImageLibrary3));

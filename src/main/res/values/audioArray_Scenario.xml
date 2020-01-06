@@ -2,7 +2,8 @@
 <resources>
     <integer-array name="audio_array_Scenario">
         <item>@raw/happy_scenario_1</item>
-        <item>@raw/surprise_scenario_1</item>
+        <item>@raw/happy_scenario_1</item>
+        <!--<item>@raw/surprise_scenario_1</item>-->
         <item>@raw/surprise_scenario_2</item>
 
         <item>@raw/sad_scenario_1</item>
@@ -10,8 +11,10 @@
         <item>@raw/happy_scenario_2</item>
 
         <item>@raw/anger_scenario_2</item>
-        <item>@raw/surprise_scenario_3</item>
-        <item>@raw/sad_scenario_2</item>
+        <item>@raw/anger_scenario_2</item>
+        <item>@raw/anger_scenario_2</item>
+        <!--<item>@raw/surprise_scenario_3</item>-->
+        <!--<item>@raw/sad_scenario_2</item>-->
 
         <item>@raw/anger_scenario_3</item>
         <item>@raw/sad_scenario_3</item>
@@ -20,13 +23,15 @@
 
         <item>@raw/anger_scenario_4</item>
         <item>@raw/happy_scenario_4</item>
-        <item>@raw/surprise_scenario_5</item>
+        <item>@raw/happy_scenario_4</item>
+        <!--<item>@raw/surprise_scenario_5</item>-->
         <item>@raw/sad_scenario_4</item>
 
         <item>@raw/happy_scenario_5</item>
         <item>@raw/anger_scenario_5</item>
 
-        <item>@raw/happy_scenario_6</item>
+        <item>@raw/anger_scenario_5</item>
+        <!--<item>@raw/happy_scenario_6</item>-->
 
     </integer-array>
 </resources>

@@ -12,6 +12,7 @@ public class QuestionsLib_Scenario {
             "anger", "happy", "surprise", "sad",
             "happy", "anger",
             "happy" };
+    public TypedArray mImageLibraryScenario;
     public TypedArray mImageLibrary1;
     public TypedArray mImageLibrary2;
     public TypedArray mImageLibrary3;
@@ -62,6 +63,7 @@ public class QuestionsLib_Scenario {
 
     public QuestionsLib_Scenario(Context context) {
         super();
+        mImageLibraryScenario = context.getResources().obtainTypedArray(R.array.QuestionImagesScenario);
         mImageLibrary1 = context.getResources().obtainTypedArray(R.array.ID_Images1);
         mImageLibrary2 = context.getResources().obtainTypedArray(R.array.ID_Images2);
         mImageLibrary3 = context.getResources().obtainTypedArray(R.array.ID_Images3);
