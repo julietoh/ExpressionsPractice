@@ -19,7 +19,14 @@ import com.airbnb.lottie.LottieAnimationView;
 public class IdentifyActivity_v2 extends AppCompatActivity {
     private int questionNum = 0;
     private int score = 0;
+    private String nextQuestion = "";
+    private String anger = "anger";
+    private String surprise = "surprise";
+    private String happy = "happy";
+    private String sad = "sad";
     private boolean attempted = false;
+    private boolean repeat = false;
+    private boolean inRepeat = false;
     private TextView tvScore;
     private TextView tvQuestion;
     private TextView tvResponse;
@@ -90,7 +97,8 @@ public class IdentifyActivity_v2 extends AppCompatActivity {
     }
 
     private void cardClicked(String[] selectedAnswer, int cardNum) {
-        if (checkAnswer(selectedAnswer)) {
+        if (checkAnswer(selectedAnswer, cardNum)) {
+            inRepeat = false;
             mediaPlayer.stop();
             mediaPlayer= MediaPlayer.create( this, R.raw.correct_sound);
             mediaPlayer.start();
@@ -118,6 +126,7 @@ public class IdentifyActivity_v2 extends AppCompatActivity {
         }
         else {
             attempted = true;
+            nextQuestion = QuestionsLib.mCorrectAnswer[questionNum];
             tvResponse.setText("Try again");
             mediaPlayer.stop();
             mediaPlayer= MediaPlayer.create( this, R.raw.try_again);
@@ -147,8 +156,18 @@ public class IdentifyActivity_v2 extends AppCompatActivity {
 
     }
 
-    private boolean checkAnswer(String[] selectedAnswer) {
-        return selectedAnswer[questionNum].equals(QuestionsLib.mCorrectAnswer[questionNum]);
+    private boolean checkAnswer(String[] selectedAnswer, int cardNum) {
+        if (inRepeat) {
+            if (cardNum == 1){
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+        else {
+            return selectedAnswer[questionNum].equals(QuestionsLib.mCorrectAnswer[questionNum]);
+        }
 
     }
 
@@ -156,24 +175,80 @@ public class IdentifyActivity_v2 extends AppCompatActivity {
         if (!attempted) {
             score++;
         }
-        questionNum++;
+        if (attempted) {
+            repeat = true;
+        }
         attempted = false;
-
         // increment score
         String scr = "Score: " + score + "/20";
         tvScore.setText(scr);
 
+        if (repeat) {
+            inRepeat = true;
+            repeat = false;
+            if (nextQuestion.equals(anger)) {
+                tvQuestion.setText(QuestionsLib.questions[questionNum]);
+                tvResponse.setText("");
 
-        tvQuestion.setText(QuestionsLib.questions[questionNum]);
-        tvResponse.setText("");
+                image1.setImageResource(R.drawable.anger_1);
+                image2.setImageResource(R.drawable.happy_2);
+                image3.setImageResource(R.drawable.surprise_2);
+                image4.setImageResource(R.drawable.happy_3);
 
-        image1.setImageResource(QuestionsLib.getQuestion(questionNum, QuestionsLib.mImageLibrary1));
-        image2.setImageResource(QuestionsLib.getQuestion(questionNum, QuestionsLib.mImageLibrary2));
-        image3.setImageResource(QuestionsLib.getQuestion(questionNum, QuestionsLib.mImageLibrary3));
-        image4.setImageResource(QuestionsLib.getQuestion(questionNum, QuestionsLib.mImageLibrary4));
+                mediaPlayer = MediaPlayer.create(this, QuestionsLib.getAudio(questionNum, QuestionsLib.audioLibrary));
+                mediaPlayer.start();
+            }
+            else if (nextQuestion.equals(happy)) {
+                tvQuestion.setText(QuestionsLib.questions[questionNum]);
+                tvResponse.setText("");
 
-        mediaPlayer= MediaPlayer.create(this, QuestionsLib.getAudio(questionNum, QuestionsLib.audioLibrary));
-        mediaPlayer.start();
+                image1.setImageResource(R.drawable.happy_2);
+                image2.setImageResource(R.drawable.anger_1);
+                image3.setImageResource(R.drawable.surprise_2);
+                image4.setImageResource(R.drawable.sad_2);
+
+                mediaPlayer = MediaPlayer.create(this, QuestionsLib.getAudio(questionNum, QuestionsLib.audioLibrary));
+                mediaPlayer.start();
+            }
+            else if (nextQuestion.equals(surprise)) {
+                tvQuestion.setText(QuestionsLib.questions[questionNum]);
+                tvResponse.setText("");
+
+                image1.setImageResource(R.drawable.surprise_2);
+                image2.setImageResource(R.drawable.happy_2);
+                image3.setImageResource(R.drawable.sad_2);
+                image4.setImageResource(R.drawable.happy_3);
+
+                mediaPlayer = MediaPlayer.create(this, QuestionsLib.getAudio(questionNum, QuestionsLib.audioLibrary));
+                mediaPlayer.start();
+            }
+            else if (nextQuestion.equals(sad)) {
+                tvQuestion.setText(QuestionsLib.questions[questionNum]);
+                tvResponse.setText("");
+
+                image1.setImageResource(R.drawable.sad_3);
+                image2.setImageResource(R.drawable.happy_2);
+                image3.setImageResource(R.drawable.surprise_2);
+                image4.setImageResource(R.drawable.happy_3);
+
+                mediaPlayer = MediaPlayer.create(this, QuestionsLib.getAudio(questionNum, QuestionsLib.audioLibrary));
+                mediaPlayer.start();
+            }
+        }
+
+        else {
+            questionNum++;
+            tvQuestion.setText(QuestionsLib.questions[questionNum]);
+            tvResponse.setText("");
+
+            image1.setImageResource(QuestionsLib.getQuestion(questionNum, QuestionsLib.mImageLibrary1));
+            image2.setImageResource(QuestionsLib.getQuestion(questionNum, QuestionsLib.mImageLibrary2));
+            image3.setImageResource(QuestionsLib.getQuestion(questionNum, QuestionsLib.mImageLibrary3));
+            image4.setImageResource(QuestionsLib.getQuestion(questionNum, QuestionsLib.mImageLibrary4));
+
+            mediaPlayer = MediaPlayer.create(this, QuestionsLib.getAudio(questionNum, QuestionsLib.audioLibrary));
+            mediaPlayer.start();
+        }
 
     }
 }
