@@ -148,7 +148,7 @@ public class Scenario_v2 extends AppCompatActivity {
                 public void run() {
                     mediaPlayer.start();
                 }
-            }, 500);
+            }, 850);
 
         }
 

@@ -62,37 +62,46 @@ public class IdentifyActivity_v2 extends AppCompatActivity {
         card1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                cardClicked(QuestionsLib.answers1);
+                cardClicked(QuestionsLib.answers1, 1);
                 }
         });
 
         card2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                cardClicked(QuestionsLib.answers2);
+                cardClicked(QuestionsLib.answers2, 2);
             }
         });
 
         card3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                cardClicked(QuestionsLib.answers3);
+                cardClicked(QuestionsLib.answers3, 3);
             }
         });
 
         card4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                cardClicked(QuestionsLib.answers4);
+                cardClicked(QuestionsLib.answers4, 4);
             }
         });
 
     }
 
-    private void cardClicked(String[] selectedAnswer) {
+    private void cardClicked(String[] selectedAnswer, int cardNum) {
         if (checkAnswer(selectedAnswer)) {
-            mediaPlayer= MediaPlayer.create( this, R.raw.nice_job);
+            mediaPlayer.stop();
+            mediaPlayer= MediaPlayer.create( this, R.raw.correct_sound);
             mediaPlayer.start();
+            mediaPlayer= MediaPlayer.create( this, R.raw.great_work);
+            final Handler handler1 = new Handler();
+            handler1.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    mediaPlayer.start();
+                }
+            }, 1000);
             tvResponse.setText("Nice Job!");
             viewFlipper.showNext();
             animationView.playAnimation();
@@ -110,8 +119,30 @@ public class IdentifyActivity_v2 extends AppCompatActivity {
         else {
             attempted = true;
             tvResponse.setText("Try again");
+            mediaPlayer.stop();
             mediaPlayer= MediaPlayer.create( this, R.raw.try_again);
             mediaPlayer.start();
+            if (cardNum == 1) {
+                image1.setImageResource(R.drawable.wrong_answer);
+            }
+            else if (cardNum == 2) {
+                image2.setImageResource(R.drawable.wrong_answer);
+            }
+            else if (cardNum == 3) {
+                image3.setImageResource(R.drawable.wrong_answer);
+            }
+            else if (cardNum == 4) {
+                image4.setImageResource(R.drawable.wrong_answer);
+            }
+
+            final Handler handler = new Handler();
+            mediaPlayer= MediaPlayer.create(this, QuestionsLib.getAudio(questionNum, QuestionsLib.audioLibrary));
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    mediaPlayer.start();
+                }
+            }, 850);
         }
 
     }

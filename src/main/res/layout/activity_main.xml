@@ -14,7 +14,7 @@
     <LinearLayout
         android:id="@+id/question"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="500dp"
         android:orientation="vertical"
         android:background="@android:color/transparent">
     <LinearLayout
@@ -42,7 +42,7 @@
         <ImageView
             android:id="@+id/question_image"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:gravity="center" />
     </LinearLayout>
 
