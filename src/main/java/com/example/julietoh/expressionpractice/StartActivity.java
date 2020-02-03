@@ -13,6 +13,11 @@ import android.media.MediaPlayer;
  */
 
 public class StartActivity extends AppCompatActivity {
+    public int IdentifyQuestionNum = 0;
+    public int IdentifyScore = 0;
+    public int ScenarioQuestionNum = 0;
+    public int ScenarioScore = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,6 +26,7 @@ public class StartActivity extends AppCompatActivity {
         Button buttonID = findViewById(R.id.button_identification);
         Button buttonIM= findViewById(R.id.button_imitation);
         Button buttonSC= findViewById(R.id.button_scenario);
+
 //        MediaPlayer mediaPlayer= MediaPlayer.create( this, R.raw.welcome_dale_2);
 //        mediaPlayer.start();
 //        final Intent intentQuiz = new Intent(this, StartScreen.class);

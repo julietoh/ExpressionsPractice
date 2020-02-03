@@ -1,6 +1,8 @@
 package com.example.julietoh.expressionpractice;
 
 import android.Manifest;
+//import android.graphics.Camera;
+import android.hardware.Camera;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
@@ -48,6 +50,7 @@ public class ImitationActivity extends AppCompatActivity implements Detector.Fac
     private String mCorrectAnswer;
     CountDownTimer cTimer = null;
     boolean timerInProgress = false;
+    Camera c = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +66,18 @@ public class ImitationActivity extends AppCompatActivity implements Detector.Fac
         updateQuestion();
         mediaPlayer= MediaPlayer.create( this, R.raw.imitate_emotion);
         mediaPlayer.start();
+        c = Camera.open();
+        Camera.Parameters p = c.getParameters();
+//        p.setZoom(3);
+        p.setRotation(90);
+//        p.setPreviewSize(1, 1);
+        c.setParameters(p);
+
+//        // Create our Preview view and set it as the content of our activity.
+//        cameraView = findViewById(R.id.camera_view);
+//        CameraPreview mPreview = new CameraPreview(this, mCamera);
+//        FrameLayout preview = (FrameLayout) findViewById(R.id.camera_preview);
+//        preview.addView(mPreview);
 
     }
 
@@ -102,15 +117,15 @@ public class ImitationActivity extends AppCompatActivity implements Detector.Fac
      */
     void determineCameraAvailability() {
         PackageManager manager = getPackageManager();
-        isFrontFacingCameraDetected = manager.hasSystemFeature(PackageManager.FEATURE_CAMERA_FRONT);
+        isFrontFacingCameraDetected = manager.hasSystemFeature(PackageManager.FEATURE_CAMERA);
 
         //set default camera settings
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
 
         //restore the camera type settings
-        String cameraTypeName = sharedPreferences.getString("cameraType", CameraDetector.CameraType.CAMERA_FRONT.name());
-        if (cameraTypeName.equals(CameraDetector.CameraType.CAMERA_FRONT.name())) {
-            cameraType = CameraDetector.CameraType.CAMERA_FRONT;
+        String cameraTypeName = sharedPreferences.getString("cameraType", CameraDetector.CameraType.CAMERA_BACK.name());
+        if (cameraTypeName.equals(CameraDetector.CameraType.CAMERA_BACK.name())) {
+            cameraType = CameraDetector.CameraType.CAMERA_BACK;
         }
     }
 

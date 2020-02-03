@@ -1,5 +1,6 @@
 package com.example.julietoh.expressionpractice;
 
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.res.TypedArray;
 import android.media.MediaPlayer;
@@ -13,10 +14,12 @@ import android.widget.Toast;
 import android.support.v7.widget.CardView;
 import android.os.Handler;
 import android.widget.ViewFlipper;
+import android.widget.Button;
 
 import com.airbnb.lottie.LottieAnimationView;
 
 public class Scenario_v2 extends AppCompatActivity {
+    private Button homeButton;
     private int questionNum = 0;
     private int score = 0;
     private boolean attempted = false;
@@ -44,6 +47,7 @@ public class Scenario_v2 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scenario_v2);
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        homeButton = findViewById(R.id.home_button);
         viewFlipper = findViewById(R.id.view_flipper);
         tvScore = findViewById(R.id.score);
         tvResponse = findViewById(R.id.responseToAnswer);
@@ -60,6 +64,17 @@ public class Scenario_v2 extends AppCompatActivity {
         QuestionsLib = new QuestionsLib_Scenario(this);
 
         tvResponse.setText("");
+
+        final Intent intentHome = new Intent(this, StartActivity.class);
+        homeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                ScenarioQuestionNumber = 0;
+//                ScenarioScore = 0;
+                startActivity(intentHome);
+            }
+        });
+
 
         mediaPlayer= MediaPlayer.create( this, R.raw.happy_scenario_1);
         mediaPlayer.start();

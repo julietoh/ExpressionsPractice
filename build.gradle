@@ -8,7 +8,7 @@ buildscript {
         maven { url "http://maven.affectiva.com" }
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.3.0'
+        classpath 'com.android.tools.build:gradle:3.4.1'
     }
 }
 
@@ -25,7 +25,7 @@ allprojects {
 apply plugin: 'com.android.application'
 android {
     compileSdkVersion 26 // tried changing to 21
-    buildToolsVersion "26.0.3" // 26.0.1
+    buildToolsVersion '28.0.3' // 26.0.1
     defaultConfig {
         applicationId "com.example.julietoh.expressionpractice"
         minSdkVersion 16
@@ -48,15 +48,25 @@ android {
         abortOnError false
     }
 }
+android {
+    splits {
+        abi {
+            enable true
+            reset()
+            include 'x86', 'armeabi-v7a'
+            universalApk true
+        }
+    }
+}
 
 dependencies {
-    compile 'com.affectiva.android:affdexsdk:3.2'
-    compile 'com.android.support:support-annotations:27.1.1'
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.android.support:appcompat-v7:26.1.0'
-    compile 'com.android.support:cardview-v7:22.2.0'
-    compile 'com.android.support.constraint:constraint-layout:1.1.3'
-    compile "com.airbnb.android:lottie:2.0.0"
+    implementation 'com.affectiva.android:affdexsdk:3.2'
+    implementation 'com.android.support:support-annotations:27.1.1'
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.android.support:appcompat-v7:26.1.0'
+    implementation 'com.android.support:cardview-v7:22.2.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+    implementation "com.airbnb.android:lottie:2.0.0"
 
 }
 

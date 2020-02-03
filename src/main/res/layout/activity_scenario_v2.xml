@@ -12,18 +12,35 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:gravity="top|left"
-        android:layout_height="40dp">
+        android:gravity="top"
+        android:layout_height="50dp">
 
         <TextView
             android:id="@+id/score"
             android:text="Score: "
-            android:textSize="13sp"
+            android:textSize="30sp"
             android:textColor="@android:color/white"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginEnd="42dp"
+            android:layout_marginRight="42dp"
+            android:gravity="start"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/home_button"
+            android:text="HOME"
+            android:textSize="25sp"
+            android:textColor="@android:color/holo_blue_dark"
+            android:layout_alignParentLeft="true"
             android:layout_centerInParent="true"
+            android:layout_marginLeft="4dp"
+            android:layout_marginRight="4dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
     </RelativeLayout>
+
 
     <ViewFlipper
         android:id="@+id/view_flipper"
@@ -32,18 +49,14 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="300dp">
+            android:layout_height="match_parent">
 
             <ImageView
                 android:id="@+id/scenario_image"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginStart="90dp"
-                android:layout_marginLeft="57dp"
-                android:layout_marginTop="0dp"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
                 android:src="@drawable/happy_scen_1" />
         </RelativeLayout>
 
