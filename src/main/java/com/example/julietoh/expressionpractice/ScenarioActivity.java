@@ -38,8 +38,8 @@ public class ScenarioActivity extends AppCompatActivity implements Detector.Face
     private TextView score_text;
 
     // Variables for question
-    private int mQuestionNumber = 0;
-    private int mScore = 0;
+    private static int mQuestionNumber = 0;
+    private static int mScore = 0;
     private QuestionsLibraryScenario mQuestionsLibrary;
     private ImageView questionImageView;
     private String mCorrectAnswer;

@@ -20,8 +20,8 @@ import com.airbnb.lottie.LottieAnimationView;
 
 public class Scenario_v2 extends AppCompatActivity {
     private Button homeButton;
-    private int questionNum = 0;
-    private int score = 0;
+    private static int questionNum = 0;
+    private static int score = 0;
     private boolean attempted = false;
     private TextView tvScore;
 //    private TextView tvQuestion;
@@ -69,15 +69,21 @@ public class Scenario_v2 extends AppCompatActivity {
         homeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                ScenarioQuestionNumber = 0;
-//                ScenarioScore = 0;
                 startActivity(intentHome);
             }
         });
 
+        imageScenario.setImageResource(QuestionsLib.getQuestion(questionNum, QuestionsLib.mImageLibraryScenario));
+        image1.setImageResource(QuestionsLib.getQuestion(questionNum, QuestionsLib.mImageLibrary1));
+        image2.setImageResource(QuestionsLib.getQuestion(questionNum, QuestionsLib.mImageLibrary2));
+        image3.setImageResource(QuestionsLib.getQuestion(questionNum, QuestionsLib.mImageLibrary3));
+        image4.setImageResource(QuestionsLib.getQuestion(questionNum, QuestionsLib.mImageLibrary4));
 
-        mediaPlayer= MediaPlayer.create( this, R.raw.happy_scenario_1);
+        mediaPlayer= MediaPlayer.create(this, QuestionsLib.getAudio(questionNum, QuestionsLib.audioLibrary_scenario));
         mediaPlayer.start();
+
+//        mediaPlayer= MediaPlayer.create( this, R.raw.happy_scenario_1);
+//        mediaPlayer.start();
 
         card1.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -1,5 +1,6 @@
 package com.example.julietoh.expressionpractice;
 
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.res.TypedArray;
 import android.media.MediaPlayer;
@@ -9,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Button;
 import android.widget.Toast;
 import android.support.v7.widget.CardView;
 import android.os.Handler;
@@ -17,8 +19,9 @@ import android.widget.ViewFlipper;
 import com.airbnb.lottie.LottieAnimationView;
 
 public class IdentifyActivity_v2 extends AppCompatActivity {
-    private int questionNum = 0;
-    private int score = 0;
+    private Button homeButton;
+    private static int questionNum = 0;
+    private static int score = 0;
     private String nextQuestion = "";
     private String anger = "anger";
     private String surprise = "surprise";
@@ -49,6 +52,7 @@ public class IdentifyActivity_v2 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_identify_v2);
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        homeButton = findViewById(R.id.home_button);
         viewFlipper = findViewById(R.id.view_flipper);
         tvScore = findViewById(R.id.score);
         tvQuestion = findViewById(R.id.textQuestion);
@@ -63,8 +67,28 @@ public class IdentifyActivity_v2 extends AppCompatActivity {
         image4 = findViewById(R.id.emotion_image_4);
         animationView = (LottieAnimationView) findViewById(R.id.animation_view);
         QuestionsLib = new QuestionsLib_ID(this);
-        mediaPlayer= MediaPlayer.create( this, R.raw.show_surprise);
+
+        tvQuestion.setText(QuestionsLib.questions[questionNum]);
+        tvResponse.setText("");
+
+        final Intent intentHome = new Intent(this, StartActivity.class);
+        homeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(intentHome);
+            }
+        });
+
+        image1.setImageResource(QuestionsLib.getQuestion(questionNum, QuestionsLib.mImageLibrary1));
+        image2.setImageResource(QuestionsLib.getQuestion(questionNum, QuestionsLib.mImageLibrary2));
+        image3.setImageResource(QuestionsLib.getQuestion(questionNum, QuestionsLib.mImageLibrary3));
+        image4.setImageResource(QuestionsLib.getQuestion(questionNum, QuestionsLib.mImageLibrary4));
+
+        mediaPlayer = MediaPlayer.create(this, QuestionsLib.getAudio(questionNum, QuestionsLib.audioLibrary));
         mediaPlayer.start();
+
+//        mediaPlayer= MediaPlayer.create( this, R.raw.show_surprise);
+//        mediaPlayer.start();
 
         card1.setOnClickListener(new View.OnClickListener() {
             @Override

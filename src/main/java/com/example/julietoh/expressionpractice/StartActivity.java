@@ -13,10 +13,6 @@ import android.media.MediaPlayer;
  */
 
 public class StartActivity extends AppCompatActivity {
-    public int IdentifyQuestionNum = 0;
-    public int IdentifyScore = 0;
-    public int ScenarioQuestionNum = 0;
-    public int ScenarioScore = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
