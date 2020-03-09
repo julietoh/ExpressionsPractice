@@ -15,19 +15,18 @@
         android:gravity="top"
         android:layout_height="50dp">
 
-        <TextView
-            android:id="@+id/score"
-            android:text="Score: "
-            android:textSize="25sp"
-            android:textColor="@android:color/white"
+        <Button
+            android:id="@+id/button_score_details"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
-            android:layout_marginEnd="42dp"
-            android:layout_marginRight="42dp"
             android:gravity="start"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_gravity="end"
+            android:text="score details"
+            android:textColor="@android:color/holo_blue_dark"
+            android:textSize="25sp"/>
         <Button
             android:id="@+id/home_button"
             android:text="HOME"
@@ -41,6 +40,24 @@
             android:layout_height="wrap_content" />
 
     </RelativeLayout>
+
+
+    <TextView
+        android:id="@+id/score"
+        android:layout_width="149dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_centerInParent="true"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_gravity="end"
+        android:layout_marginEnd="42dp"
+        android:layout_marginRight="50dp"
+        android:gravity="start"
+        android:text="Score: "
+        android:textColor="@android:color/white"
+        android:textSize="25sp" />
 
     <ViewFlipper
         android:id="@+id/view_flipper"

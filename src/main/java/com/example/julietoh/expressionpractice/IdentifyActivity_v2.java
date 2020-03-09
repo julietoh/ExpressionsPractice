@@ -18,8 +18,11 @@ import android.widget.ViewFlipper;
 
 import com.airbnb.lottie.LottieAnimationView;
 
+import java.util.Random;
+
 public class IdentifyActivity_v2 extends AppCompatActivity {
     private Button homeButton;
+    private Button scoreDetailsButton;
     private static int questionNum = 0;
     private static int score = 0;
     private String nextQuestion = "";
@@ -27,9 +30,9 @@ public class IdentifyActivity_v2 extends AppCompatActivity {
     private String surprise = "surprise";
     private String happy = "happy";
     private String sad = "sad";
-    private boolean attempted = false;
-    private boolean repeat = false;
-    private boolean inRepeat = false;
+    private static boolean attempted = false;
+    private static boolean repeat = false;
+    private static boolean inRepeat = false;
     private TextView tvScore;
     private TextView tvQuestion;
     private TextView tvResponse;
@@ -47,12 +50,28 @@ public class IdentifyActivity_v2 extends AppCompatActivity {
     private ViewFlipper viewFlipper;
     private LottieAnimationView animationView;
 
+    static int questionCount = 0;
+    static int happyCorrect = 0;
+    static int happyTot = 0;
+    static int sadCorrect = 0;
+    static int sadTot = 0;
+    static int surpriseCorrect = 0;
+    static int surpriseTot = 0;
+    static int angryCorrect = 0;
+    static int angryTot = 0;
+    String qType;
+    int one = 1;
+    static int randomNum;
+    static Random rand = new Random();
+    static int count = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_identify_v2);
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         homeButton = findViewById(R.id.home_button);
+        scoreDetailsButton = findViewById(R.id.button_score_details);
         viewFlipper = findViewById(R.id.view_flipper);
         tvScore = findViewById(R.id.score);
         tvQuestion = findViewById(R.id.textQuestion);
@@ -71,11 +90,32 @@ public class IdentifyActivity_v2 extends AppCompatActivity {
         tvQuestion.setText(QuestionsLib.questions[questionNum]);
         tvResponse.setText("");
 
+        String scr = "Score: " + score + "/" + questionCount;
+        tvScore.setText(scr);
+
+
         final Intent intentHome = new Intent(this, StartActivity.class);
         homeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(intentHome);
+            }
+        });
+
+        final Intent intentScoreDetails = new Intent(this, ScoreDetails.class);
+        scoreDetailsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                intentScoreDetails.putExtra("happyCorrect", happyCorrect);
+                intentScoreDetails.putExtra("happyTot", happyTot);
+                intentScoreDetails.putExtra("sadCorrect", sadCorrect);
+                intentScoreDetails.putExtra("sadTot", sadTot);
+                intentScoreDetails.putExtra("surpriseCorrect", surpriseCorrect);
+                intentScoreDetails.putExtra("surpriseTot", surpriseTot);
+                intentScoreDetails.putExtra("angryCorrect", angryCorrect);
+                intentScoreDetails.putExtra("angryTot", angryTot);
+                intentScoreDetails.putExtra("level", one);
+                startActivity(intentScoreDetails);
             }
         });
 
@@ -118,10 +158,43 @@ public class IdentifyActivity_v2 extends AppCompatActivity {
             }
         });
 
+        // increment score
+        int score = happyCorrect + sadCorrect + angryCorrect + surpriseCorrect;
+        int questionCount = happyTot + sadTot + angryTot + surpriseTot;
+        scr = "Score: " + score + "/" + questionCount;
+        tvScore.setText(scr);
+
     }
 
     private void cardClicked(String[] selectedAnswer, int cardNum) {
         if (checkAnswer(selectedAnswer, cardNum)) {
+
+            if (!attempted) {
+                qType = QuestionsLib.mCorrectAnswer[questionNum];
+                if (qType.equals(anger)) {
+                    angryCorrect++;
+                    angryTot++;
+                }
+                else if (qType.equals(sad)) {
+                    sadCorrect++;
+                    sadTot++;
+                }
+                else if (qType.equals(surprise)) {
+                    surpriseCorrect++;
+                    surpriseTot++;
+                }
+                else if (qType.equals(happy)) {
+                    happyCorrect++;
+                    happyTot++;
+                }
+
+                // increment score
+                int score = happyCorrect + sadCorrect + angryCorrect + surpriseCorrect;
+                int questionCount = happyTot + sadTot + angryTot + surpriseTot;
+                String scr = "Score: " + score + "/" + questionCount;
+                tvScore.setText(scr);
+            }
+
             inRepeat = false;
             mediaPlayer.stop();
             mediaPlayer= MediaPlayer.create( this, R.raw.correct_sound);
@@ -149,6 +222,27 @@ public class IdentifyActivity_v2 extends AppCompatActivity {
 
         }
         else {
+            if (!attempted) {
+                qType = QuestionsLib.mCorrectAnswer[questionNum];
+                if (qType.equals(anger)) {
+                    angryTot++;
+                }
+                else if (qType.equals(sad)) {
+                    sadTot++;
+                }
+                else if (qType.equals(surprise)) {
+                    surpriseTot++;
+                }
+                else if (qType.equals(happy)) {
+                    happyTot++;
+                }
+                // increment score
+                int score = happyCorrect + sadCorrect + angryCorrect + surpriseCorrect;
+                int questionCount = happyTot + sadTot + angryTot + surpriseTot;
+                String scr = "Score: " + score + "/" + questionCount;
+                tvScore.setText(scr);
+            }
+
             attempted = true;
             nextQuestion = QuestionsLib.mCorrectAnswer[questionNum];
             tvResponse.setText("Try again");
@@ -196,6 +290,21 @@ public class IdentifyActivity_v2 extends AppCompatActivity {
     }
 
     private void incrementPicture() {
+        count++;
+        if (count == 20) {
+            final Intent intentScoreDetails = new Intent(this, ScoreDetails.class);
+            intentScoreDetails.putExtra("happyCorrect", happyCorrect);
+            intentScoreDetails.putExtra("happyTot", happyTot);
+            intentScoreDetails.putExtra("sadCorrect", sadCorrect);
+            intentScoreDetails.putExtra("sadTot", sadTot);
+            intentScoreDetails.putExtra("surpriseCorrect", surpriseCorrect);
+            intentScoreDetails.putExtra("surpriseTot", surpriseTot);
+            intentScoreDetails.putExtra("angryCorrect", angryCorrect);
+            intentScoreDetails.putExtra("angryTot", angryTot);
+            intentScoreDetails.putExtra("level", one);
+            startActivity(intentScoreDetails);
+        }
+        questionCount++;
         if (!attempted) {
             score++;
         }
@@ -203,9 +312,6 @@ public class IdentifyActivity_v2 extends AppCompatActivity {
             repeat = true;
         }
         attempted = false;
-        // increment score
-        String scr = "Score: " + score + "/20";
-        tvScore.setText(scr);
 
         if (repeat) {
             inRepeat = true;
@@ -261,6 +367,10 @@ public class IdentifyActivity_v2 extends AppCompatActivity {
         }
 
         else {
+            int min = 0;
+            int max = 18;
+            randomNum = rand.nextInt((max - min) + 1) + min;
+            questionNum = randomNum;
             questionNum++;
             tvQuestion.setText(QuestionsLib.questions[questionNum]);
             tvResponse.setText("");

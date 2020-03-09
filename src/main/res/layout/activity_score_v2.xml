@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/blue_background">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:orientation="vertical">
+        <Button
+            android:id="@+id/button_home"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="Home"
+            />
+        <Button
+            android:id="@+id/button_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="back"
+            />
+        <View
+            android:layout_width="0dp"
+            android:layout_height="30dp"/>
+
+        <TextView
+            android:id="@+id/text_view_overall_score"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="false"
+            android:gravity="start"
+            android:textSize="30dp"
+            android:text="Total score: "
+            android:textAppearance="@style/TextAppearance.AppCompat" />
+
+        <TextView
+            android:id="@+id/text_view_happy_score"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="false"
+            android:gravity="start"
+            android:textSize="30dp"
+            android:text="Happy: "
+            android:textAppearance="@style/TextAppearance.AppCompat" />
+        <TextView
+            android:id="@+id/text_view_sad_score"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="false"
+            android:gravity="start"
+            android:textSize="30dp"
+            android:text="Sad: "
+            android:textAppearance="@style/TextAppearance.AppCompat" />
+        <TextView
+            android:id="@+id/text_view_angry_score"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="false"
+            android:gravity="start"
+            android:textSize="30dp"
+            android:text="Anger: "
+            android:textAppearance="@style/TextAppearance.AppCompat" />
+        <TextView
+            android:id="@+id/text_view_surprise_score"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="false"
+            android:gravity="start"
+            android:textSize="30dp"
+            android:text="Surprised: "
+            android:textAppearance="@style/TextAppearance.AppCompat" />
+
+    </LinearLayout>
+</RelativeLayout>
