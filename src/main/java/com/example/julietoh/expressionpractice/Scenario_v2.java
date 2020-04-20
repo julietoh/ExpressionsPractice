@@ -278,7 +278,8 @@ public class Scenario_v2 extends AppCompatActivity {
     private void incrementPicture() {
         count++;
 
-        if (count == 20) {
+        if (count > 19) {
+            mediaPlayer.stop();
             final Intent intentScoreDetails = new Intent(this, ScoreDetails.class);
             intentScoreDetails.putExtra("happyCorrect", happyCorrect);
             intentScoreDetails.putExtra("happyTot", happyTot);

@@ -21,6 +21,7 @@ public class ScoreDetails extends AppCompatActivity {
     int total_correct;
     int total_questions;
     int level = 0;
+    String levelName = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +44,7 @@ public class ScoreDetails extends AppCompatActivity {
         TextView text_view_sad_score = findViewById(R.id.text_view_sad_score);
         TextView text_view_angry_score = findViewById(R.id.text_view_angry_score);
         TextView text_view_surprise_score = findViewById(R.id.text_view_surprise_score);
+        TextView text_view_level = findViewById(R.id.text_view_level);
 
         total_correct = happyCorrect + sadCorrect + surpriseCorrect + angryCorrect;
         total_questions = happyTot + sadTot + surpriseTot + angryTot;
@@ -71,11 +73,19 @@ public class ScoreDetails extends AppCompatActivity {
             }
         });
 
+        if (level == 1) {
+            levelName = "Level: Identify";
+        }
+        if (level == 0) {
+            levelName = "Level: Scenario";
+        }
         String overall = "Total score: " + total_correct + "/" + total_questions;
         String happy = "Happy score: " + happyCorrect + "/" + happyTot;
         String sad = "Sad score: " + sadCorrect + "/" + sadTot;
         String surprise = "Surprise score: " + surpriseCorrect + "/" + surpriseTot;
         String anger = "Angry score: " + angryCorrect + "/" + angryTot;
+
+        text_view_level.setText(levelName);
         text_view_overall_score.setText(overall);
         text_view_happy_score.setText(happy);
         text_view_sad_score.setText(sad);

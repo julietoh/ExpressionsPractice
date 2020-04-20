@@ -12,27 +12,31 @@ import android.widget.TextView;
  */
 
 public class ScoreActivity extends AppCompatActivity {
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        Intent intent = new Intent(this, StartActivity.class);
-        startActivity(intent);
-        finish();
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_score);
         int score = getIntent().getIntExtra("SCORE", 0);
+
         TextView resultTextView = findViewById(R.id.score_text);
         Button home_button = findViewById(R.id.home_button);
+
+        resultTextView.setText(score + "/20");
+
         final Intent intent = new Intent(this, StartActivity.class);
         home_button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 startActivity(intent);
             }
         });
-        resultTextView.setText(score + "/20");
     }
+
+//    @Override
+//    public void onBackPressed() {
+//        super.onBackPressed();
+//        Intent intent = new Intent(this, StartActivity.class);
+//        startActivity(intent);
+//        finish();
+//    }
 }

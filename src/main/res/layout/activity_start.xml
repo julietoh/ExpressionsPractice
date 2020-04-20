@@ -3,9 +3,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:orientation="vertical">
@@ -13,7 +14,7 @@
         <ImageView
             android:id="@+id/emotion_image"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="200dp"
             android:gravity="center"
             android:src="@drawable/emotions_pictures" />
 
@@ -23,7 +24,7 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:gravity="center"
-            android:textSize="30dp"
+            android:textSize="17dp"
             android:text="Choose which level you want to practice with!"
             android:textAppearance="@style/TextAppearance.AppCompat" />
 
@@ -33,8 +34,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:textSize="100dp"
-            android:layout_margin="30dp"
+            android:layout_margin="10dp"
             android:background="@color/colorAccent"
             android:text="Identify"
             android:textAppearance="@style/TextAppearance.AppCompat.Display2" />
@@ -45,8 +45,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:textSize="100dp"
-            android:layout_margin="30dp"
+            android:layout_margin="10dp"
             android:background="@color/colorAccent"
             android:text="Imitate"
             android:textAppearance="@style/TextAppearance.AppCompat.Display2" />
@@ -57,8 +56,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:textSize="100dp"
-            android:layout_margin="30dp"
+            android:layout_margin="10dp"
             android:background="@color/colorAccent"
             android:text="React"
             android:textAppearance="@style/TextAppearance.AppCompat.Display2" />

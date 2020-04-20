@@ -3,8 +3,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
     android:orientation="vertical"
     android:background="@drawable/blue_background"
     android:weightSum="10"
@@ -12,13 +12,13 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:gravity="top"
-        android:layout_height="50dp">
+        android:layout_height="wrap_content"
+        android:gravity="top">
 
         <Button
             android:id="@+id/home_button"
             android:text="HOME"
-            android:textSize="25sp"
+            android:textSize="15sp"
             android:textColor="@android:color/holo_blue_dark"
             android:layout_alignParentLeft="true"
             android:layout_centerInParent="true"
@@ -34,17 +34,16 @@
             android:layout_centerInParent="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
-            android:gravity="start"
             android:layout_gravity="end"
             android:text="score details"
             android:textColor="@android:color/holo_blue_dark"
-            android:textSize="25sp"/>
+            android:textSize="15sp"/>
     </RelativeLayout>
 
     <TextView
         android:id="@+id/score"
         android:text="Score: "
-        android:textSize="30sp"
+        android:textSize="15sp"
         android:textColor="@android:color/white"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
@@ -62,46 +61,42 @@
     <ViewFlipper
         android:id="@+id/view_flipper"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="110dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
             <ImageView
                 android:id="@+id/scenario_image"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
+                android:layout_width="398dp"
+                android:layout_height="176dp"
                 android:src="@drawable/happy_scen_1" />
         </RelativeLayout>
 
 
         <RelativeLayout
-            android:layout_width="400dp"
-            android:layout_height="350dp"
-            android:layout_marginStart="200dp"
-            android:layout_marginLeft="57dp">
+            android:layout_width="200dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="70dp"
+            android:layout_marginLeft="40dp">
 
-        <com.airbnb.lottie.LottieAnimationView
-            android:id="@+id/animation_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            app:lottie_fileName="trophy.json"
-            app:lottie_loop="true"
-            app:lottie_autoPlay="true"
-            />
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/animation_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                app:lottie_autoPlay="true"
+                app:lottie_fileName="trophy.json"
+                app:lottie_loop="true" />
         </RelativeLayout>
 
     </ViewFlipper>
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_weight=".2">
+        android:layout_height="wrap_content">
 
         <TextView
             android:id="@+id/responseToAnswer"
@@ -115,8 +110,8 @@
 
     <GridLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="10"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
         android:alignmentMode="alignMargins"
         android:columnCount="2"
         android:columnOrderPreserved="false"
@@ -127,8 +122,8 @@
         <!--column 1-->
         <android.support.v7.widget.CardView
             android:id="@+id/card1"
-            android:layout_width="350dp"
-            android:layout_height="300dp"
+            android:layout_width="135dp"
+            android:layout_height="135dp"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             android:layout_marginBottom="16dp"
@@ -155,8 +150,8 @@
         <!--column 2-->
         <android.support.v7.widget.CardView
             android:id="@+id/card2"
-            android:layout_width="350dp"
-            android:layout_height="300dp"
+            android:layout_width="135dp"
+            android:layout_height="135dp"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             android:layout_marginBottom="16dp"
@@ -184,8 +179,8 @@
         <!--column 1-->
         <android.support.v7.widget.CardView
             android:id="@+id/card3"
-            android:layout_width="350dp"
-            android:layout_height="300dp"
+            android:layout_width="135dp"
+            android:layout_height="135dp"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             android:layout_marginBottom="16dp"
@@ -212,8 +207,8 @@
         <!--column 2-->
         <android.support.v7.widget.CardView
             android:id="@+id/card4"
-            android:layout_width="350dp"
-            android:layout_height="300dp"
+            android:layout_width="135dp"
+            android:layout_height="135dp"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             android:layout_marginBottom="16dp"

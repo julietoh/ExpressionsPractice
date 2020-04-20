@@ -14,8 +14,8 @@
 
     <LinearLayout
         android:id="@+id/question"
-        android:layout_width="match_parent"
-        android:layout_height="485dp"
+        android:layout_width="400dp"
+        android:layout_height="200dp"
         android:background="@android:color/transparent"
         android:orientation="vertical">
 
@@ -46,8 +46,8 @@
 
         <ImageView
             android:id="@+id/question_image"
-            android:layout_width="878dp"
-            android:layout_height="434dp"
+            android:layout_width="match_parent"
+            android:layout_height="201dp"
             android:gravity="center" />
     </LinearLayout>
 

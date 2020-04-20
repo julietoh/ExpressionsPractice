@@ -29,6 +29,16 @@
             android:layout_height="30dp"/>
 
         <TextView
+            android:id="@+id/text_view_level"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="false"
+            android:gravity="start"
+            android:textSize="30dp"
+            android:text="Level: "
+            android:textAppearance="@style/TextAppearance.AppCompat" />
+
+        <TextView
             android:id="@+id/text_view_overall_score"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

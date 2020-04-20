@@ -84,7 +84,7 @@ public class ImitationActivity extends AppCompatActivity implements Detector.Fac
      */
     private void updateQuestion() {
         if (mQuestionNumber == 20) {
-            detector.stop();
+//            detector.stop();
             Intent intent = new Intent(this, ScoreActivity.class);
             intent.putExtra("SCORE", mScore);
             startActivity(intent);
@@ -195,7 +195,7 @@ public class ImitationActivity extends AppCompatActivity implements Detector.Fac
                 if (joy > 95 && smile > 90) {
                     mScore++;
                     startTimer();
-                    mediaPlayer= MediaPlayer.create( this, R.raw.nice_job);
+                    mediaPlayer= MediaPlayer.create( this, R.raw.correct_sound);
                     mediaPlayer.start();
                     Toast toast = Toast.makeText(this, "Correct! Expression is happy.",
                             Toast.LENGTH_SHORT);
@@ -207,7 +207,7 @@ public class ImitationActivity extends AppCompatActivity implements Detector.Fac
                 if ((sadness > 20) || (disgust > 50 && joy < 10)) {
                     mScore++;
                     startTimer();
-                    mediaPlayer= MediaPlayer.create( this, R.raw.nice_job);
+                    mediaPlayer= MediaPlayer.create( this, R.raw.correct_sound);
                     mediaPlayer.start();
                     Toast toast = Toast.makeText(this, "Correct! Expression is sad.",
                             Toast.LENGTH_SHORT);
@@ -219,7 +219,7 @@ public class ImitationActivity extends AppCompatActivity implements Detector.Fac
                 if (surprise > 10 || mouth_open > 15 || brow_raise > 25) {
                     mScore++;
                     startTimer();
-                    mediaPlayer= MediaPlayer.create( this, R.raw.nice_job);
+                    mediaPlayer= MediaPlayer.create( this, R.raw.correct_sound);
                     mediaPlayer.start();
                     Toast toast = Toast.makeText(this, "Correct! Expression is surprise.",
                             Toast.LENGTH_SHORT);
@@ -231,7 +231,7 @@ public class ImitationActivity extends AppCompatActivity implements Detector.Fac
                 if (anger > 15 || brow_furrow > 10) {
                     mScore++;
                     startTimer();
-                    mediaPlayer= MediaPlayer.create( this, R.raw.nice_job);
+                    mediaPlayer= MediaPlayer.create( this, R.raw.correct_sound);
                     mediaPlayer.start();
                     Toast toast = Toast.makeText(this, "Correct! Expression is anger.",
                             Toast.LENGTH_SHORT);
