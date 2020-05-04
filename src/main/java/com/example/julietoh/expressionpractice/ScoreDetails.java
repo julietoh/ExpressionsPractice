@@ -6,9 +6,20 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-
+import android.widget.Toast;
+import java.util.Calendar;
+import java.util.Date;
+import java.text.Format;
+import java.text.SimpleDateFormat;
 
 public class ScoreDetails extends AppCompatActivity {
+
+    private static final String TAG = "ScoreDetails";
+
+    DatabaseHelper mDatabaseHelper;
+    private Button btnAdd;
+    private Button btnViewData;
+
 
     int happyCorrect;
     int happyTot;
@@ -27,6 +38,11 @@ public class ScoreDetails extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_score_v2);
+
+        btnAdd = findViewById(R.id.btnAdd);
+        btnViewData = findViewById(R.id.btnView);
+        mDatabaseHelper = new DatabaseHelper(this);
+
 
         happyCorrect = getIntent().getIntExtra("happyCorrect", 0);
         happyTot = getIntent().getIntExtra("happyTot", 0);
@@ -79,11 +95,15 @@ public class ScoreDetails extends AppCompatActivity {
         if (level == 0) {
             levelName = "Level: Scenario";
         }
-        String overall = "Total score: " + total_correct + "/" + total_questions;
-        String happy = "Happy score: " + happyCorrect + "/" + happyTot;
-        String sad = "Sad score: " + sadCorrect + "/" + sadTot;
-        String surprise = "Surprise score: " + surpriseCorrect + "/" + surpriseTot;
-        String anger = "Angry score: " + angryCorrect + "/" + angryTot;
+        final String overall = "Total score: " + total_correct + "/" + total_questions;
+        final String happy = "Happy score: " + happyCorrect + "/" + happyTot;
+        final String sad = "Sad score: " + sadCorrect + "/" + sadTot;
+        final String surprise = "Surprise score: " + surpriseCorrect + "/" + surpriseTot;
+        final String anger = "Angry score: " + angryCorrect + "/" + angryTot;
+
+        Format formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Date currentTime = Calendar.getInstance().getTime();
+        final String time = formatter.format(currentTime);
 
         text_view_level.setText(levelName);
         text_view_overall_score.setText(overall);
@@ -92,5 +112,41 @@ public class ScoreDetails extends AppCompatActivity {
         text_view_angry_score.setText(surprise);
         text_view_surprise_score.setText(anger);
 
+        btnAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                AddData(time, levelName, overall, happy, sad, surprise, anger);
+            }
+        });
+
+        final Intent historyIntent = new Intent(this, ScoreHistory.class);
+        btnViewData.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(historyIntent);
+            }
+        });
+
+
+
+    }
+
+    public void AddData(String time, String level, String score, String happy, String sad, String surprise, String anger) {
+        boolean insertData = mDatabaseHelper.addData(time, level, score, happy, sad, surprise, anger);
+
+        if (insertData) {
+            toastMessage("Your score was saved!");
+        } else {
+            toastMessage("Something went wrong");
+        }
+    }
+
+    /**
+     * customizable toast
+     * @param message
+     */
+    private void toastMessage(String message){
+        Toast.makeText(this,message, Toast.LENGTH_SHORT).show();
     }
 }

@@ -8,6 +8,7 @@ import android.content.pm.PackageManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
@@ -46,7 +47,7 @@ public class ImitationActivity extends AppCompatActivity implements Detector.Fac
     private QuestionsLibrary mQuestionsLibrary;
     private ImageView questionImageView;
     private String mCorrectAnswer;
-    CountDownTimer cTimer = null;
+    public static CountDownTimer cTimer = null;
     boolean timerInProgress = false;
 
     @Override
@@ -63,14 +64,19 @@ public class ImitationActivity extends AppCompatActivity implements Detector.Fac
         updateQuestion();
         mediaPlayer= MediaPlayer.create( this, R.raw.imitate_emotion);
         mediaPlayer.start();
+        startTimer();
 
     }
 
     void startTimer() {
-        cTimer = new CountDownTimer(2000, 1000) {
+        final Toast toast = Toast.makeText(this, "Countdown finished", Toast.LENGTH_SHORT);
+        cTimer = new CountDownTimer(10000, 1000) {
             public void onTick(long millisUntilFinished) {
             }
             public void onFinish() {
+
+                toast.setGravity(Gravity.CENTER, 0, 0);
+                toast.show();
                 updateQuestion();
                 timerInProgress = false;
             }
@@ -94,6 +100,7 @@ public class ImitationActivity extends AppCompatActivity implements Detector.Fac
         questionImageView.setBackgroundResource(mQuestionsLibrary.getQuestion(mQuestionNumber));
         mCorrectAnswer = mQuestionsLibrary.getCorrectAnswer(mQuestionNumber);
         mQuestionNumber++;
+        startTimer();
         // Reached last question
     }
 
@@ -194,49 +201,85 @@ public class ImitationActivity extends AppCompatActivity implements Detector.Fac
             case "happy":
                 if (joy > 95 && smile > 90) {
                     mScore++;
-                    startTimer();
+//                    startTimer();
+//                    cTimer.cancel(); // added
                     mediaPlayer= MediaPlayer.create( this, R.raw.correct_sound);
                     mediaPlayer.start();
                     Toast toast = Toast.makeText(this, "Correct! Expression is happy.",
                             Toast.LENGTH_SHORT);
                     toast.setGravity(Gravity.CENTER, 0, 0);
                     toast.show();
+                    updateQuestion();
+//                    final Handler handler = new Handler();
+//                    handler.postDelayed(new Runnable() {
+//                        @Override
+//                        public void run() {
+//                            updateQuestion();
+//                        }
+//                    }, 2000);
                 }
                 break;
             case "sad":
                 if ((sadness > 20) || (disgust > 50 && joy < 10)) {
                     mScore++;
-                    startTimer();
+//                    startTimer();
+//                    cTimer.cancel(); // added
                     mediaPlayer= MediaPlayer.create( this, R.raw.correct_sound);
                     mediaPlayer.start();
                     Toast toast = Toast.makeText(this, "Correct! Expression is sad.",
                             Toast.LENGTH_SHORT);
                     toast.setGravity(Gravity.CENTER, 0, 0);
                     toast.show();
+                    updateQuestion();
+//                    final Handler handler = new Handler();
+//                    handler.postDelayed(new Runnable() {
+//                        @Override
+//                        public void run() {
+//                            updateQuestion();
+//                        }
+//                    }, 2000);
                 }
                 break;
             case "surprise":
                 if (surprise > 10 || mouth_open > 15 || brow_raise > 25) {
                     mScore++;
-                    startTimer();
+//                    startTimer();
+//                    cTimer.cancel(); // added
                     mediaPlayer= MediaPlayer.create( this, R.raw.correct_sound);
                     mediaPlayer.start();
                     Toast toast = Toast.makeText(this, "Correct! Expression is surprise.",
                             Toast.LENGTH_SHORT);
                     toast.setGravity(Gravity.CENTER, 0, 0);
                     toast.show();
+                    updateQuestion();
+//                    final Handler handler = new Handler();
+//                    handler.postDelayed(new Runnable() {
+//                        @Override
+//                        public void run() {
+//                            updateQuestion();
+//                        }
+//                    }, 2000);
                 }
                 break;
             case "anger":
                 if (anger > 15 || brow_furrow > 10) {
                     mScore++;
-                    startTimer();
+//                    startTimer();
+//                    cTimer.cancel(); // added
                     mediaPlayer= MediaPlayer.create( this, R.raw.correct_sound);
                     mediaPlayer.start();
                     Toast toast = Toast.makeText(this, "Correct! Expression is anger.",
                             Toast.LENGTH_SHORT);
                     toast.setGravity(Gravity.CENTER, 0, 0);
                     toast.show();
+                    updateQuestion();
+//                    final Handler handler = new Handler();
+//                    handler.postDelayed(new Runnable() {
+//                        @Override
+//                        public void run() {
+//                            updateQuestion();
+//                        }
+//                    }, 2000);
                 }
                 break;
         }

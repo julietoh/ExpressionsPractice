@@ -22,6 +22,7 @@ public class StartActivity extends AppCompatActivity {
         Button buttonID = findViewById(R.id.button_identification);
         Button buttonIM= findViewById(R.id.button_imitation);
         Button buttonSC= findViewById(R.id.button_scenario);
+        Button progress = findViewById(R.id.score_history);
 
 //        MediaPlayer mediaPlayer= MediaPlayer.create( this, R.raw.welcome_dale_2);
 //        mediaPlayer.start();
@@ -30,6 +31,7 @@ public class StartActivity extends AppCompatActivity {
         final Intent intentMain = new Intent(this, ImitationActivity.class);
 //        final Intent intentScenario = new Intent(this, ScenarioActivity.class);
         final Intent intentScenario = new Intent(this, Scenario_v2.class);
+        final Intent intentHistory = new Intent(this, ScoreHistory.class);
 
         buttonID.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,6 +49,12 @@ public class StartActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(intentScenario);
+            }
+        });
+        progress.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(intentHistory);
             }
         });
     }
