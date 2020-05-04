@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+// Database code adapted from https://github.com/mitchtabian/SaveReadWriteDeleteSQLite
 public class DatabaseHelper extends SQLiteOpenHelper {
 
     private static final String TAG = "DatabaseHelper";
@@ -69,14 +70,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         } else {
             return true;
         }
-    }
-
-    public Cursor getItemID(String name){
-        SQLiteDatabase db = this.getWritableDatabase();
-        String query = "SELECT " + COL0 + " FROM " + TABLE_NAME +
-                " WHERE " + COL2 + " = '" + name + "'";
-        Cursor data = db.rawQuery(query, null);
-        return data;
     }
 
     public Cursor getData(){
